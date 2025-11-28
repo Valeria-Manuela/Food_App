@@ -69,7 +69,7 @@ fun CategorySection(
                             category = categoryModel,
                             modifier = Modifier
                                 .weight(1f)
-                                .padding(horizontal = 8.dp),
+                                .padding(horizontal = 12.dp),
                             onItemClick = {
 
                             }

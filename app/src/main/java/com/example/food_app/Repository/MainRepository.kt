@@ -1,4 +1,3 @@
-// Repository.kt
 package com.example.food_app.Repository
 
 import androidx.lifecycle.LiveData
@@ -8,36 +7,40 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.Locale
 import android.util.Log
 
 class MainRepository {
 
-
     private val firebaseDatabase = FirebaseDatabase.getInstance()
-    private val categoryRef = firebaseDatabase.getReference("Category")
 
-    private val _categories = MutableLiveData<List<CategoryModel>>()
-    val categories: LiveData<List<CategoryModel>> get() = _categories
+    fun loadCategory(): LiveData<MutableList<CategoryModel>>{
 
-    init {
-        loadCategories()
-    }
+        val listData = MutableLiveData<MutableList<CategoryModel>>()
 
-    private fun loadCategories() {
-        categoryRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
+        val ref = firebaseDatabase.getReference("Category")
+
+        ref.addValueEventListener(object:ValueEventListener{
+
+            override fun onDataChange(snapshot:DataSnapshot){
+
                 val list = mutableListOf<CategoryModel>()
-                for (child in snapshot.children) {
-                    child.getValue(CategoryModel::class.java)?.let { list.add(it) }
+
+                for (childSnapshot in snapshot.children){
+
+                    val item = childSnapshot.getValue(CategoryModel::class.java)
+
+                    item?.let {list.add(it)}
                 }
-                _categories.value = list
+
+                listData.value = list
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("MainRepository", "Erro ao carregar categorias: ${error.message}", error.toException())
-                _categories.value = emptyList()
+            override fun onCancelled(error:DatabaseError){
+                Log.e("MainRepository", "Erro ao carregar categorias do Firebase: ${error.message}", error.toException())
             }
         })
-    }
 
+        return listData
+    }
 }
