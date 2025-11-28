@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "483914954912",
+    "firebase_url": "https://foodapp-bec77-default-rtdb.firebaseio.com",
+    "project_id": "foodapp-bec77",
+    "storage_bucket": "foodapp-bec77.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483914954912:android:a0b71165d5630f9235b1c5",
+        "android_client_info": {
+          "package_name": "com.example.food_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuOLyia5jgeU3F6A3BHneKQLoaUSCEOx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
