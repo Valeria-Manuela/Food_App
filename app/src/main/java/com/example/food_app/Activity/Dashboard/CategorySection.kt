@@ -37,7 +37,7 @@ fun CategorySection(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp),
+                .height(350.dp),
             contentAlignment = Alignment.Center
         ) {
             CircularProgressIndicator(
