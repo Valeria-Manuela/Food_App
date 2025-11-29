@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.food_app.Activity.Dashboard.DescriptionSection
+import com.example.food_app.Activity.Dashboard.FooterSection
 import com.example.food_app.Activity.Dashboard.RecommendedList
 import com.example.food_app.Domain.FoodModel
 import com.example.food_app.R
@@ -38,7 +39,7 @@ fun DetailScreen(
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
-        val (column) = createRefs()
+        val (column,footer) = createRefs()
 
         Column(
             modifier = Modifier
@@ -82,6 +83,15 @@ fun DetailScreen(
 
             RecommendedList(viewModel = mainViewModel)
         }
+        FooterSection(
+            onAddToCartClick,
+            totalPrice = (item.Price*numberinCart),
+            Modifier.constrainAs(footer){
+                bottom.linkTo(parent.bottom)
+                end.linkTo(parent.end)
+                start.linkTo(parent.start)
+            }
+        )
     }
 
 }
