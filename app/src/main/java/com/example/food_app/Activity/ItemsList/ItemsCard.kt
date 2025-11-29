@@ -1,5 +1,6 @@
 package com.example.food_app.Activity.ItemsList
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,15 +22,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import coil.compose.AsyncImage
+import com.example.food_app.Activity.FoodDetail.FoodDetailsActivity
 import com.example.food_app.Domain.FoodModel
 import com.example.food_app.R
+import com.google.gson.Gson
 
 @Composable
 fun ItemsList(items: List<FoodModel>) {
@@ -44,16 +49,24 @@ fun ItemsList(items: List<FoodModel>) {
 }
 
 @Composable
-fun FoodItemRow(item: FoodModel){
-    Row(modifier = Modifier
-        .padding(vertical = 8.dp)
-        .fillMaxWidth()
-        .background(colorResource(R.color.white), shape = RoundedCornerShape(10.dp))
-        .wrapContentHeight()
-        .clickable{}
-    ){
-        FoodImage(item=item)
-        FoodDetail(item=item)
+fun FoodItemRow(item: FoodModel) {
+
+    val context = LocalContext.current
+
+    Row(
+        modifier = Modifier
+            .padding(vertical = 8.dp)
+            .fillMaxWidth()
+            .background(colorResource(R.color.white), shape = RoundedCornerShape(10.dp))
+            .wrapContentHeight()
+            .clickable {
+                val intent = Intent(context, FoodDetailsActivity::class.java)
+                intent.putExtra("object", item)
+                context.startActivity(intent)
+            }
+    ) {
+        FoodImage(item = item)
+        FoodDetail(item = item)
     }
 }
 

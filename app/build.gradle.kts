@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services") version "4.4.4"
+    id("kotlin-parcelize")
 }
 
 android {
@@ -66,7 +67,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.constraintlayout.compose)
-
+    implementation(libs.firebase.crashlytics.buildtools)
+    implementation(libs.gson)
     testImplementation(libs.junit)
 
 

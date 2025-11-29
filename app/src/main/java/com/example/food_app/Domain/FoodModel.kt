@@ -1,22 +1,22 @@
 package com.example.food_app.Domain
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
 data class FoodModel(
-
-    var BestFood: Boolean = false,
-    var Calorie: Int = 0,
-    var CategoryId: String = "",
-    var Description: String = "",
-    var Id: Int = 0,
-    var ImagePath: String = "",
-    var LocationId: Int = 0,
-    var Price: Double = 0.0,
-    var PriceId: Int = 0,
-    var Star: Double = 0.0,
-    var TimeId: Int = 0,
-    var TimeValue: Int = 0,
-    var Title: String = ""
-)
-
-
+    val Id: Int = 0,
+    val ImagePath: String = "",
+    val Title: String = "",
+    val Description: String = "",
+    val Price: Double = 0.0,
+    val Calorie: Int = 0,
+    val Star: Double = 0.0,
+    val BestFood: Boolean = false,
+    val TimeValue: Int = 0,
+    val CategoryId: String = "",
+    val PriceId: Int = 0,
+    val TimeId: Int = 0,
+    val LocationId: Int = 0,
+    var numberInCart: Int = 0
+) : Parcelable

@@ -28,7 +28,6 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.food_app.Domain.CategoryModel
 import com.example.food_app.R
 import coil.compose.AsyncImage
-import com.example.food_app.Activity.ItemsList.ItemsList
 import com.example.food_app.Activity.ItemsList.ItemsListActivity
 
 @Composable
