@@ -1,5 +1,6 @@
 package com.example.food_app.Activity.Dashboard
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,6 +27,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.food_app.Activity.FoodDetail.FoodDetailsActivity
 import com.example.food_app.Domain.FoodModel
 import com.example.food_app.R
 
@@ -43,7 +45,11 @@ fun FoodItemCardGrid(item: FoodModel) {
                 shape = RoundedCornerShape(14.dp)
             )
             .clip(RoundedCornerShape(14.dp))
-            .clickable { },
+            .clickable {
+                val intent = Intent(context, FoodDetailsActivity::class.java)
+                intent.putExtra("object", item)
+                context.startActivity(intent)
+            },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
