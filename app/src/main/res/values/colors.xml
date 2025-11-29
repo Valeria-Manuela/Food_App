@@ -10,4 +10,6 @@
     <color name="lightGrey">#FFE0E0E0</color>
     <color name="grey">#FF9E9E9E</color>
     <color name="darkPurple"> #FF053555</color>
+    <color name="green"> #008000</color>
+
 </resources>
