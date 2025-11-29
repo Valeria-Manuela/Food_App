@@ -18,19 +18,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.food_app.Activity.Dashboard.DescriptionSection
+import com.example.food_app.Activity.Dashboard.RecommendedList
 import com.example.food_app.Domain.FoodModel
 import com.example.food_app.R
+import com.example.food_app.ViewModel.MainViewModel
 
 @Composable
-fun DetailScreen(item: FoodModel, onBackClick:()->Unit, onAddToCartClick: ()-> Unit) {
+fun DetailScreen(
+    item: FoodModel,
+    onBackClick: () -> Unit,
+    onAddToCartClick: () -> Unit
+) {
+    val mainViewModel: MainViewModel = viewModel()
 
     var numberinCart by remember { mutableIntStateOf(item.numberInCart) }
 
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
-
         val (column) = createRefs()
 
         Column(
@@ -48,33 +55,33 @@ fun DetailScreen(item: FoodModel, onBackClick:()->Unit, onAddToCartClick: ()-> U
             HeaderSection(item = item, onBackClick = onBackClick)
 
             TitleNumberRow(
-                item=item,
-                numberInCart =numberinCart ,
+                item = item,
+                numberInCart = numberinCart,
                 onIncrement = {
                     numberinCart++
                     item.numberInCart = numberinCart
                 },
                 onDecrement = {
-                    if(numberinCart > 1){
+                    if (numberinCart > 1) {
                         numberinCart--
                         item.numberInCart = numberinCart
                     }
                 }
-
             )
 
             Text(
-                text= "$${item.Price}",
+                text = "$${item.Price}",
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
                 color = colorResource(R.color.black),
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-
+                modifier = Modifier.padding(horizontal = 16.dp)
             )
 
             RowDetail(item)
             DescriptionSection(item.Description)
+
+            RecommendedList(viewModel = mainViewModel)
         }
     }
+
 }
