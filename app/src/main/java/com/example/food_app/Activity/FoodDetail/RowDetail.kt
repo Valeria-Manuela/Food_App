@@ -74,7 +74,7 @@ fun RowDetail(item: FoodModel, modifier: Modifier = Modifier){
             contentDescription= null
         )
 
-        Text(text="${item.Calorie} m",
+        Text(text="${item.Calorie} ",
             modifier = Modifier.padding(start = 8.dp),
             fontWeight = FontWeight.Bold,
             fontSize = 15.sp,

@@ -100,7 +100,7 @@ fun TitleNumberRow(
 
 
                     }
-                    .clickable{onIncrement}
+                    .clickable{onIncrement()}
             ){
 
                 Text(
@@ -130,7 +130,7 @@ fun TitleNumberRow(
 
 
                     }
-                    .clickable{onDecrement}
+                    .clickable{onDecrement()}
             ){
 
                 Text(
