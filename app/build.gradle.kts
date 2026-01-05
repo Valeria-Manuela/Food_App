@@ -1,3 +1,5 @@
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -44,8 +46,11 @@ android {
 }
 
 dependencies {
+
+    val room_version = "2.8.4"
     implementation(libs.androidx.core.ktx)
 
+    implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
@@ -69,7 +74,10 @@ dependencies {
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.gson)
+
     testImplementation(libs.junit)
+
+
 
 
     androidTestImplementation(libs.androidx.junit)
